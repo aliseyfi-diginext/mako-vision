@@ -1,18 +1,20 @@
 <template>
-    <app-layout title="Mako-Vision Control Panel">
+    <dashboard title="Mako-Vision Control Panel">
 
-        Home
+        <div class="tile">
+            اینجا داشبورد ماست و در آینده امکانات دیگر به اینجا اضافه خواهد شد!
+        </div>
 
-    </app-layout>
+    </dashboard>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
+    import Dashboard from '@/Layouts/Dashboard.vue'
 
     export default defineComponent({
         components: {
-            AppLayout
+            Dashboard
         },
         data : function () {
             return {

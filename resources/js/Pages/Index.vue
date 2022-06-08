@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Mako-Vision">
+    <simple-layout title="Mako-Vision">
 
         <div class="body">
             <div class="circle"></div>
@@ -32,16 +32,16 @@
             </div>
         </div>
 
-    </app-layout>
+    </simple-layout>
 </template>
 
 <script>
     import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
+    import SimpleLayout from '@/Layouts/SimpleLayout.vue'
 
     export default defineComponent({
         components: {
-            AppLayout
+            SimpleLayout
         },
         data : function () {
             return {

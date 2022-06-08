@@ -3,10 +3,7 @@
 
         <Head :title="title" />
 
-        <main id="main" class="main">
-            <slot></slot>
-        </main>
-
+        <slot></slot>
 
     </div>
 </template>

@@ -33,7 +33,13 @@ var copyToClipboard = function (text) {
     input.select();
     var result = document.execCommand('copy');
     document.body.removeChild(input);
-    this.swalSuccess(this.$swal, 'کپی شد', 750)
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'کپی شد!',
+        showConfirmButton: false,
+        timer: 1000
+    });
 }
 
 var swalSuccess = function (message='تغییرات با موفقیت ذخیره شد') {
@@ -108,7 +114,14 @@ var dTime = function (date) {
     }
     return hours + ':' + mins;
 }
-
+var downloadData = function (data, filename){
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+}
 
 createInertiaApp({
     resolve: name => require(`./Pages/${name}.vue`),
@@ -120,7 +133,7 @@ createInertiaApp({
                 swalSuccess, swalError, swalValidationErrors, swalAreYouSure,
                 pDate, dTime,
                 historyBack, openRoute, openURL,
-                copyToClipboard,
+                copyToClipboard, downloadData
             },
             components : {},
         })
