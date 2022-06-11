@@ -98,14 +98,14 @@
 }
 
 .body::-webkit-scrollbar-thumb {
-    background:#62868A;
+    background:#366165;
     border-radius: 20px;
 }
 .circle{
     width:50%;
     height:70%;
     position: absolute;
-    background:#62868A;
+    background:#366165;
     border-radius:0 0 100%  0;
 }
 
@@ -159,7 +159,7 @@
 .form-input:focus + .form-label {
     transform: translateY(-12px) scale(.8);
     transform-origin:right top;
-    color: #62868A;
+    color: #366165;
     font-size: 20px;
 }
 .form-label{
@@ -173,7 +173,7 @@
     font-size: 16px;
 }
 .form-submit{
-    background: #62868A;
+    background: #366165;
     color:#fff;
     font-weight: 300;
     font-size: 1.1rem;
@@ -194,7 +194,7 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: #62868A;
+    background-color: #366165;
     transform: scale(0);
     transform: left bottom;
     transition: transform .4s;

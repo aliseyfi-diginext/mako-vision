@@ -89,15 +89,15 @@
     }
 
     aside > ul > li.active {
-        color: #62868A;
+        color: #366165;
         font-weight: bold;
-        border-right-color: #62868A;
+        border-right-color: #366165;
     }
 
     aside > ul > li:hover {
-        background-color: #62868A;
+        background-color: #366165;
         color: #fcfcfc;
-        border-right-color: #62868A;
+        border-right-color: #366165;
     }
 
 

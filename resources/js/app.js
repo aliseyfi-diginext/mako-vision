@@ -70,7 +70,7 @@ var swalValidationErrors = function (list) {
         html: errorMessages,
     });
 }
-var swalAreYouSure = function (url, array=[], index=-1, method='delete') {
+var swalAreYouSure = function (url, array=[], index=-1, method='delete', redirectURL='') {
     Swal.fire({
         title: 'آیا مطمئن هستید؟',
         icon: 'warning',
@@ -94,6 +94,9 @@ var swalAreYouSure = function (url, array=[], index=-1, method='delete') {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    if (redirectURL) {
+                        this.openURL(redirectURL);
+                    }
                 }
             });
         }

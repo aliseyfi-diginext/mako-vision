@@ -10,7 +10,11 @@ Route::middleware('guest')->group(function () {
 Route::middleware('panel')->prefix('home')->group(function () {
 
     Route::get('/', 'HomeController@home')->name('home');
-    Route::get('/jsons/{target?}', 'HomeController@jsons')->name('jsons');
-    Route::get('/json/download/{target}', 'HomeController@downloadJson')->name('jsons.download');
+
+    // jsons
+    Route::get('/jsons', 'JsonsController@list')->name('jsons');
+    Route::get('/jsons/{target}', 'JsonsController@show')->name('jsons.show');
+    Route::delete('/jsons/{target}', 'JsonsController@destroy')->name('jsons.destroy');
+    Route::get('/json/download/{target}', 'JsonsController@download')->name('jsons.download');
 
 });

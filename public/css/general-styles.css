@@ -78,13 +78,28 @@ pre {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #62868A;
+  background: #366165;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #62868A;
+  background: #366165;
+}
+
+
+.text-primary {
+    color: #366165 !important;
+}
+
+.btn.btn-outline-primary {
+    border-color: #366165;
+    color: #366165;
+}
+
+.btn.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #366165;
 }
 
 .tile {
@@ -92,4 +107,5 @@ pre {
     border-radius: 15px;
     box-shadow: 4px 4px 8px #ccc;
     padding: 30px 20px;
+    margin-bottom: 30px;
 }
