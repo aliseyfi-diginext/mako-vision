@@ -11,10 +11,10 @@ class JsonsController extends Controller
 {
     public function list()
     {
-        $files = Storage::disk('jsons')->allFiles();
+        $files = Storage::disk('health-jsons')->allFiles();
         unset($files[0]); // remove .gitkeep file
         foreach ($files as $fileName) {
-            $timestamp = Storage::disk('jsons')->lastModified($fileName);
+            $timestamp = Storage::disk('health-jsons')->lastModified($fileName);
             $date = Carbon::createFromTimestamp($timestamp);
             $key = str_replace('.json', '', $fileName);
             $list []= compact('fileName', 'key', 'date');
@@ -25,8 +25,8 @@ class JsonsController extends Controller
 
     public function show($target)
     {
-        if (Storage::disk('jsons')->exists("${target}.json")) {
-            $jsonFile = Storage::disk('jsons')->get("${target}.json");
+        if (Storage::disk('health-jsons')->exists("${target}.json")) {
+            $jsonFile = Storage::disk('health-jsons')->get("${target}.json");
             $contents = json_decode($jsonFile, true);
         }else {
             abort(404);
@@ -36,8 +36,8 @@ class JsonsController extends Controller
 
     public function download($target)
     {
-        if (Storage::disk('jsons')->exists("${target}.json")) {
-            return Storage::disk('jsons')->download("${target}.json");
+        if (Storage::disk('health-jsons')->exists("${target}.json")) {
+            return Storage::disk('health-jsons')->download("${target}.json");
         }else {
             abort(404);
         }
@@ -45,8 +45,8 @@ class JsonsController extends Controller
 
     public function destroy($target)
     {
-        if (Storage::disk('jsons')->exists("${target}.json")) {
-            $result = Storage::disk('jsons')->delete("${target}.json");
+        if (Storage::disk('health-jsons')->exists("${target}.json")) {
+            $result = Storage::disk('health-jsons')->delete("${target}.json");
             return ['success' => $result];
         }else {
             abort(404);
