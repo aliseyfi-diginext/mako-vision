@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/test', function () {
+    dd('here');
+});
+
 Route::middleware('guest')->group(function () {
     Route::get('/', 'LandingController@index')->name('landing');
     Route::post('/login', 'AccController@login')->name('login');
