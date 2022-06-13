@@ -35,9 +35,9 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'health-jsons' => [
+        'jsons' => [
             'driver' => 'local',
-            'root' => storage_path('jsons/health'),
+            'root' => storage_path('jsons'),
         ],
 
         'public' => [

@@ -2,8 +2,19 @@
     <dashboard title="Mako-Vision Control Panel">
 
         <div class="tile">
+            <div class="text-center">
+                <button type="button" class="btn btn-lg mx-1" :class="folder == 'health' ? 'btn-dark' : 'btn-outline-dark'"
+                @click="openRoute('jsons', 'health')">
+                    <i class="bi bi-heart-pulse-fill"></i> Health
+                </button>
+                <button type="button" class="btn btn-lg mx-1" :class="folder == 'barcodes' ? 'btn-dark' : 'btn-outline-dark'"
+                @click="openRoute('jsons', 'barcodes')">
+                    <i class="bi bi-file-break-fill"></i> Barcodes
+                </button>
+            </div>
+            <hr>
             <h1 class="h4 mb-3"> فایل‌های موجود در سیستم </h1>
-            <table class="table table-responsive-md table-striped table-bordered">
+            <table class="table table-responsive-lg table-striped table-bordered">
                 <thead>
                     <tr>
                         <th> # </th>
@@ -16,11 +27,11 @@
                 <tbody>
                     <tr v-for="item, i in list">
                         <th> {{i+1}} </th>
-                        <td> {{item.fileName}} </td>
+                        <td> {{item.key}} </td>
                         <td> {{pDate(item.date)}} </td>
                         <td> {{dTime(item.date)}} </td>
                         <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm mx-1" @click="openRoute('jsons.show', item.key)">
+                            <button type="button" class="btn btn-outline-primary btn-sm mx-1" @click="openRoute('jsons.show', [this.folder, item.key])">
                                 <i class="bi bi-eye"></i>
                                 مشاهده
                             </button>
@@ -50,7 +61,7 @@
     import Dashboard from '@/Layouts/Dashboard.vue'
 
     export default defineComponent({
-        props : ['list'],
+        props : ['list', 'folder'],
         components: {
             Dashboard
         },
@@ -61,13 +72,13 @@
         },
         methods : {
             download : function (target) {
-                var url = route('jsons.download', target);
+                var url = route('jsons.download', [this.folder, target]);
                 axios.get(url).then(res => {
                     this.downloadData(JSON.stringify(res.data), target+'.json');
                 });
             },
             destroy : function (index, target) {
-                var url = route('jsons.destroy', target);
+                var url = route('jsons.destroy', [this.folder, target]);
                 this.swalAreYouSure(url, this.list, index);
             }
         }
