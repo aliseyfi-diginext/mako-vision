@@ -6,8 +6,8 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="{{ asset('/css/general-styles.css') }}" rel="stylesheet" />
-        <link href="{{ mix('/css/app.css') }}?v=1.4" rel="stylesheet" />
-        <script src="{{ mix('/js/app.js') }}?v=1.4" defer></script>
+        <link href="{{ mix('/css/app.css') }}?v=1.5" rel="stylesheet" />
+        <script src="{{ mix('/js/app.js') }}?v=1.5" defer></script>
 
         @inertiaHead
         @routes

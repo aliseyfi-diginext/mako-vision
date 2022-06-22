@@ -31,11 +31,10 @@
                         <td> {{pDate(item.date)}} </td>
                         <td> {{dTime(item.date)}} </td>
                         <td>
-                            <button v-if="item.key.endsWith('.json')" type="button" class="btn btn-outline-primary btn-sm mx-1" @click="openRoute('jsons.show', [this.folder, item.key])">
+                            <button type="button" class="btn btn-outline-primary btn-sm mx-1" @click="openRoute('jsons.show', [this.folder, item.key])">
                                 <i class="bi bi-eye"></i>
                                 مشاهده
                             </button>
-                            <em v-else> - </em>
                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm mx-1" @click="download(item.key)">
