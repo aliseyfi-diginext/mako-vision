@@ -74,7 +74,7 @@
             download : function (target) {
                 var url = route('jsons.download', [this.folder, target]);
                 axios.get(url).then(res => {
-                    this.downloadData(JSON.stringify(res.data), target+'.json');
+                    this.downloadData(JSON.stringify(res.data), target);
                 });
             },
             destroy : function (index, target) {

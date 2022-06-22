@@ -50,7 +50,7 @@
                 this.copyToClipboard(this.jsonContents);
             },
             download : function () {
-                this.downloadData(this.jsonContents, this.target+'.json');
+                this.downloadData(this.jsonContents, this.target);
             },
             destroy : function () {
                 var url = route('jsons.destroy', this.target);

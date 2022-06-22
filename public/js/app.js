@@ -19680,7 +19680,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var url = route('jsons.download', [this.folder, target]);
       axios.get(url).then(function (res) {
-        _this.downloadData(JSON.stringify(res.data), target + '.json');
+        _this.downloadData(JSON.stringify(res.data), target);
       });
     },
     destroy: function destroy(index, target) {
@@ -19722,7 +19722,7 @@ __webpack_require__.r(__webpack_exports__);
       this.copyToClipboard(this.jsonContents);
     },
     download: function download() {
-      this.downloadData(this.jsonContents, this.target + '.json');
+      this.downloadData(this.jsonContents, this.target);
     },
     destroy: function destroy() {
       var url = route('jsons.destroy', this.target);
