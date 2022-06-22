@@ -26,8 +26,7 @@ class JsonsController extends Controller
     public function show($folder, $target)
     {
         if (Storage::disk('jsons')->exists("${folder}/${target}")) {
-            $jsonFile = Storage::disk('jsons')->get("${folder}/${target}");
-            $contents = json_decode($jsonFile, true);
+            $contents = Storage::disk('jsons')->get("${folder}/${target}");
         }else {
             abort(404);
         }

@@ -42,15 +42,14 @@
         },
         data : function () {
             return {
-                jsonContents : JSON.stringify(this.contents)
             }
         },
         methods : {
             copyContent : function () {
-                this.copyToClipboard(this.jsonContents);
+                this.copyToClipboard(this.contents);
             },
             download : function () {
-                this.downloadData(this.jsonContents, this.target);
+                this.downloadData(this.contents, this.target);
             },
             destroy : function () {
                 var url = route('jsons.destroy', this.target);

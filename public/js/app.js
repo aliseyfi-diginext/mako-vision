@@ -19713,16 +19713,14 @@ __webpack_require__.r(__webpack_exports__);
     Dashboard: _Layouts_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
-    return {
-      jsonContents: JSON.stringify(this.contents)
-    };
+    return {};
   },
   methods: {
     copyContent: function copyContent() {
-      this.copyToClipboard(this.jsonContents);
+      this.copyToClipboard(this.contents);
     },
     download: function download() {
-      this.downloadData(this.jsonContents, this.target);
+      this.downloadData(this.contents, this.target);
     },
     destroy: function destroy() {
       var url = route('jsons.destroy', this.target);
