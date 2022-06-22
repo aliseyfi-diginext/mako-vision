@@ -20299,8 +20299,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
         "class": "btn btn-outline-primary btn-lg mx-1",
-        onClick: _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.openRoute('jsons');
+        onClick: _cache[0] || (_cache[0] = function () {
+          return _ctx.historyBack && _ctx.historyBack.apply(_ctx, arguments);
         })
       }, _hoisted_4), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",

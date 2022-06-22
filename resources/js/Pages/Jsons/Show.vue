@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-between">
                 <h4> محتوای فایل {{target}} </h4>
                 <div>
-                    <button type="button" class="btn btn-outline-primary btn-lg mx-1" @click="openRoute('jsons')">
+                    <button type="button" class="btn btn-outline-primary btn-lg mx-1" @click="historyBack">
                         <i class="bi bi-arrow-right m-0"></i>
                     </button>
 
