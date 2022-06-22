@@ -16,7 +16,7 @@ class JsonsController extends Controller
         foreach ($files as $fileName) {
             $timestamp = Storage::disk('jsons')->lastModified($fileName);
             $date = Carbon::createFromTimestamp($timestamp);
-            $key = str_replace('.json', '', str_replace($folder.'/', '', $fileName));
+            $key = str_replace($folder.'/', '', $fileName);
             $list []= compact('fileName', 'key', 'date');
         }
 
@@ -25,8 +25,8 @@ class JsonsController extends Controller
 
     public function show($folder, $target)
     {
-        if (Storage::disk('jsons')->exists("${folder}/${target}.json")) {
-            $jsonFile = Storage::disk('jsons')->get("${folder}/${target}.json");
+        if (Storage::disk('jsons')->exists("${folder}/${target}")) {
+            $jsonFile = Storage::disk('jsons')->get("${folder}/${target}");
             $contents = json_decode($jsonFile, true);
         }else {
             abort(404);
@@ -36,8 +36,8 @@ class JsonsController extends Controller
 
     public function download($folder, $target)
     {
-        if (Storage::disk('jsons')->exists("${folder}/${target}.json")) {
-            return Storage::disk('jsons')->download("${folder}/${target}.json");
+        if (Storage::disk('jsons')->exists("${folder}/${target}")) {
+            return Storage::disk('jsons')->download("${folder}/${target}");
         }else {
             abort(404);
         }
@@ -45,8 +45,8 @@ class JsonsController extends Controller
 
     public function destroy($folder, $target)
     {
-        if (Storage::disk('jsons')->exists("${folder}/${target}.json")) {
-            $result = Storage::disk('jsons')->delete("${folder}/${target}.json");
+        if (Storage::disk('jsons')->exists("${folder}/${target}")) {
+            $result = Storage::disk('jsons')->delete("${folder}/${target}");
             return ['success' => $result];
         }else {
             abort(404);
