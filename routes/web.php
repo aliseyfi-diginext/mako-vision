@@ -15,6 +15,7 @@ Route::middleware('panel')->prefix('home')->group(function () {
     Route::get('/jsons/list/{folder?}', 'JsonsController@list')->name('jsons');
     Route::get('/jsons/{folder}/{target}', 'JsonsController@show')->name('jsons.show');
     Route::delete('/jsons/{folder}/{target}', 'JsonsController@destroy')->name('jsons.destroy');
+    Route::post('/jsons/group-delete/{folder}', 'JsonsController@groupDestroy')->name('jsons.group_destroy');
     Route::get('/json/download/{folder}/{target}', 'JsonsController@download')->name('jsons.download');
 
 });

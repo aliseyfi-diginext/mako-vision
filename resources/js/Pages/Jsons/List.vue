@@ -13,11 +13,22 @@
                 </button>
             </div>
             <hr>
-            <h1 class="h4 mb-3"> فایل‌های موجود در سیستم </h1>
+            <div class="d-flex justify-content-around">
+                <h1 class="h4 mb-3"> فایل‌های موجود در سیستم </h1>
+                <button type="button" v-if="dList.length" class="btn btn-outline-danger" @click="groupDestroy">
+                    <i class="bi bi-trash2"></i>
+                    حذف همه
+                </button>
+            </div>
+            <hr>
             <table class="table table-responsive-lg table-striped table-bordered">
                 <thead>
                     <tr>
                         <th> # </th>
+                        <th class="marker">
+                            <i v-if="dList.length == list.length" class="bi bi-check-square" @click="uncheckAll()"></i>
+                            <i v-else class="bi bi-square" @click="checkAll()"></i>
+                        </th>
                         <th> <i class="bi bi-file-earmark-spreadsheet-fill text-primary ms-1"></i> نام فایل </th>
                         <th> <i class="bi bi-calendar-fill text-primary ms-1"></i> تاریخ </th>
                         <th> <i class="bi bi-clock-fill text-primary ms-1"></i> ساعت </th>
@@ -27,6 +38,10 @@
                 <tbody>
                     <tr v-for="item, i in list">
                         <th> {{i+1}} </th>
+                        <td class="marker">
+                            <i v-if="dList.includes(item.key)" class="bi bi-check-square" @click="uncheck(item.key)"></i>
+                            <i v-else class="bi bi-square" @click="check(item.key)"></i>
+                        </td>
                         <td> {{item.key}} </td>
                         <td> {{pDate(item.date)}} </td>
                         <td> {{dTime(item.date)}} </td>
@@ -67,7 +82,7 @@
         },
         data : function () {
             return {
-
+                dList : []
             }
         },
         methods : {
@@ -80,6 +95,46 @@
             destroy : function (index, target) {
                 var url = route('jsons.destroy', [this.folder, target]);
                 this.swalAreYouSure(url, this.list, index);
+            },
+            check : function (key) {
+                this.dList.push(key);
+            },
+            uncheck : function (key) {
+                var index = this.dList.indexOf(key);
+                this.dList.splice(index, 1);
+            },
+            uncheckAll : function () {
+                this.dList = [];
+            },
+            checkAll : function () {
+                this.dList = [];
+                var array = this.list;
+                for (var i = 0; i < array.length; i++) {
+                    this.dList.push(array[i].key);
+                }
+            },
+            groupDestroy : function () {
+                var url = route('jsons.group_destroy', this.folder);
+                var data = this.dList;
+                axios.post(url, data).then(res => {
+                    if (res.data.success) {
+                        var array = this.dList;
+                        for (var i = 0; i < array.length; i++) {
+                            var key = array[i];
+                            var list = this.list;
+                            for (var i = 0; i < list.length; i++) {
+                                if (list[i].key == key) {
+                                    list.splice(i, 1);
+                                }
+                            }
+                        }
+                        this.swalSuccess('آیتم ها حذف شدند');
+                    }else {
+                        this.swalError();
+                    }
+                }).catch(err => {
+                    this.swalError();
+                });
             }
         }
     })
@@ -88,6 +143,10 @@
 
 <style scoped>
 
+
+.marker > i {
+    cursor: pointer;
+}
 
 
 </style>

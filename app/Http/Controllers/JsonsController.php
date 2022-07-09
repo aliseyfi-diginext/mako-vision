@@ -11,7 +11,10 @@ class JsonsController extends Controller
 {
     public function list($folder='health')
     {
-        $files = Storage::disk('jsons')->allFiles($folder);
+        $files = collect(Storage::disk('jsons')->allFiles($folder))->sortByDesc(function ($file) {
+            $timestamp = Storage::disk('jsons')->lastModified($file);
+            return $timestamp;
+        });
         unset($files[0]); // remove .gitkeep file
         foreach ($files as $fileName) {
             $timestamp = Storage::disk('jsons')->lastModified($fileName);
@@ -47,8 +50,17 @@ class JsonsController extends Controller
         if (Storage::disk('jsons')->exists("${folder}/${target}")) {
             $result = Storage::disk('jsons')->delete("${folder}/${target}");
             return ['success' => $result];
-        }else {
-            abort(404);
         }
+    }
+
+    public function groupDestroy($folder, Request $request)
+    {
+        foreach ($request->all() as $target) {
+            if (Storage::disk('jsons')->exists("${folder}/${target}")) {
+                $result = Storage::disk('jsons')->delete("${folder}/${target}");
+                dd($result);
+            }
+        }
+        return ['success' => true];
     }
 }
