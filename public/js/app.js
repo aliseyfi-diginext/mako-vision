@@ -19722,7 +19722,9 @@ __webpack_require__.r(__webpack_exports__);
 
             for (var i = 0; i < list.length; i++) {
               if (list[i].key == key) {
-                list.splice(i, 1);
+                _this2.list.splice(i, 1);
+
+                break;
               }
             }
           }

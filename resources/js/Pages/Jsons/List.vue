@@ -124,7 +124,8 @@
                             var list = this.list;
                             for (var i = 0; i < list.length; i++) {
                                 if (list[i].key == key) {
-                                    list.splice(i, 1);
+                                    this.list.splice(i, 1);
+                                    break;
                                 }
                             }
                         }
