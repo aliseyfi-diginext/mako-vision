@@ -58,7 +58,6 @@ class JsonsController extends Controller
         foreach ($request->all() as $target) {
             if (Storage::disk('jsons')->exists("${folder}/${target}")) {
                 $result = Storage::disk('jsons')->delete("${folder}/${target}");
-                dd($result);
             }
         }
         return ['success' => true];
